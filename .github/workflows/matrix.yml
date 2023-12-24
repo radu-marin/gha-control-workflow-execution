@@ -7,6 +7,13 @@ jobs:
       matrix:
         node-version: [12, 14, 16]
         operating-system: [ubuntu-latest, windows-latest]
+        include:
+          - node-version: 18
+            operating-system: ubuntu-latest # add this version only ofr ubuntu-latest via include list
+            # npm: 6 # even add brand new keys if needed
+        exclude:
+          - node-version: 12
+            operating-system: windows-latest
     runs-on: ${{ matrix.operating-system }}
     steps:
       - name: Get Code
